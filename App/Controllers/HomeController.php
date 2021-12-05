@@ -15,8 +15,9 @@ class HomeController {
      */
     public function index()
     {
-        $id = trim($_POST["id"]);
-        $secret = trim($_POST["secret"]);
+
+        $id = trim(isset($_POST["id"]) ? $_POST["id"] : '');
+        $secret = trim(isset($_POST["secret"]) ? $_POST["secret"] : '');
         $message = $this->getMessage();
         $res = (new SendSms())->send($id, $secret, $message);
         echo json_encode(['response' => $res]);

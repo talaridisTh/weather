@@ -28,7 +28,8 @@ class Routee {
      */
     public function __construct($id, $secret, $message, $phone = "+30  6911111111")
     {
-        $this->auth = (new Auth(trim($_POST["id"]), trim($_POST["secret"])))->login();
+
+        $this->auth = (new Auth($id,$secret))->login();
         $this->message = trim($message);
         $this->phone = trim($phone);
     }
